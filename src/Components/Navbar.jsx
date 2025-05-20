@@ -1,84 +1,83 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import logo from "../assets/logo.png";
+
+const hospitals = [
+  "Manipal Hospitals", "Max Hospital", "Aakash Hospital", "Artemis Hospital",
+  "BLK Hospital", "Apollo Hospital", "Jaypee Hospital", "Medanta Hospital",
+  "Fortis Escorts Heart Institute", "Fortis Hospital", "Amrita Hospital"
+];
+
+const doctors = [
+  "Oncologists", "Orthopedists", "Cardiologists", "Transplant Specialists",
+  "Plastic Surgeons", "Neurologists", "Urologists", "Nephrologists"
+];
+
+const treatments = [
+  "Cardiology", "Cosmetic Surgery", "Transplant Surgery", "Orthopedics",
+  "General Surgery", "Oncology", "Spinal Surgery", "Ophthalmology",
+  "Neurology", "Urology", "Nephrology", "ENT", "Infertility"
+];
+
+const bariatricSubmenu = [
+  "Gastric Balloon Surgery Cost in India", "Liposuction Surgery Cost in India",
+  "Tummy Tuck Surgery Cost in India", "Sleeve Gastrectomy Surgery Cost in India",
+  "Gastric Bypass Surgery Cost in India", "Lap Band Surgery Cost in India"
+];
 
 const Navbar = () => {
   const [isBariatricOpen, setIsBariatricOpen] = useState(false);
 
   return (
-    <div className="bg-linear-to-r from-green-800 to-green-400 flex justify-between items-center p-4">
+    <div className="bg-green-800 flex justify-between items-center p-4">
       <div className="flex items-center gap-4">
         <img src={logo} alt="HealHubIndia" className="h-16 w-16" />
         <h1 className="text-xl font-bold text-white">Heal Hub India</h1>
       </div>
-
       <nav className="flex-grow">
         <ul className="flex justify-end items-center gap-6">
           <li>
-            <a href="#" className="text-white hover:text-gray-300 transition duration-200">
+            <Link to="/" className="text-white hover:text-gray-300 transition duration-200">
               Home
-            </a>
+            </Link>
           </li>
-
           <li className="relative group">
-            <a href="#" className="text-white hover:text-gray-300 transition duration-200">
+            <Link to="/hospitals" className="text-white hover:text-gray-300 transition duration-200">
               Hospitals
-            </a>
-            <div className="absolute bg-white hidden group-hover:block w-48 shadow-lg rounded-lg">
+            </Link>
+            <div className="absolute bg-white hidden group-hover:block w-48 shadow-lg rounded-lg z-10">
               <ul className="py-2">
-                {[
-                  "Manipal Hospitals",
-                  "Max Hospital",
-                  "Aakash Hospital",
-                  "Artemis Hospital",
-                  "BLK Hospital",
-                  "Apollo Hospital",
-                  "Jaypee Hospital",
-                  "Medanta Hospital",
-                  "Fortis Escorts Heart Institute",
-                  "Fortis Hospital",
-                  "Amrita Hospital",
-                ].map((hospital, index) => (
+                {hospitals.map((hospital, index) => (
                   <li key={index}>
-                    <a href="#" className="block px-4 py-2 text-gray-700 hover:bg-green-100">
+                    <Link to="/hospitals" className="block px-4 py-2 text-gray-700 hover:bg-green-100">
                       {hospital}
-                    </a>
+                    </Link>
                   </li>
                 ))}
               </ul>
             </div>
           </li>
-
           <li className="relative group">
-            <a href="#" className="text-white hover:text-gray-300 transition duration-200">
+            <Link to="/doctors" className="text-white hover:text-gray-300 transition duration-200">
               Doctors
-            </a>
-            <div className="absolute bg-white hidden group-hover:block w-48 shadow-lg rounded-lg">
+            </Link>
+            <div className="absolute bg-white hidden group-hover:block w-48 shadow-lg rounded-lg z-10">
               <ul className="py-2">
-                {[
-                  "Oncologists",
-                  "Orthopedists",
-                  "Cardiologists",
-                  "Transplant Specialists",
-                  "Plastic Surgeons",
-                  "Neurologists",
-                  "Urologists",
-                  "Nephrologists",
-                ].map((doctor, index) => (
+                {doctors.map((doctor, index) => (
                   <li key={index}>
-                    <a href="#" className="block px-4 py-2 text-gray-700 hover:bg-green-100">
+                    <Link to="/doctors" className="block px-4 py-2 text-gray-700 hover:bg-green-100">
                       {doctor}
-                    </a>
+                    </Link>
                   </li>
                 ))}
               </ul>
             </div>
           </li>
-
           <li className="relative group">
-            <a href="#" className="text-white hover:text-gray-300 transition duration-200">
+            <Link to="/treatments" className="text-white hover:text-gray-300 transition duration-200">
               Treatments
-            </a>
-            <div className="absolute bg-white hidden group-hover:block w-48 shadow-lg rounded-lg">
+            </Link>
+            <div className="absolute bg-white hidden group-hover:block w-48 shadow-lg rounded-lg z-10">
               <ul className="py-2">
                 <li className="relative">
                   <button
@@ -88,58 +87,49 @@ const Navbar = () => {
                     Bariatric Surgery
                   </button>
                   {isBariatricOpen && (
-                    <div className="absolute bg-white w-48 shadow-lg left-full top-0 rounded-lg">
+                    <div className="absolute bg-white w-64 shadow-lg left-full top-0 rounded-lg z-20">
                       <ul className="py-2">
-                        {[
-                          "Gastric Balloon Surgery Cost in India",
-                          "Liposuction Surgery Cost in India",
-                          "Tummy Tuck Surgery Cost in India",
-                          "Sleeve Gastrectomy Surgery Cost in India",
-                          "Gastric Bypass Surgery Cost in India",
-                          "Lap Band Surgery Cost in India",
-                        ].map((treatment, index) => (
+                        {bariatricSubmenu.map((item, index) => (
                           <li key={index}>
-                            <a href="#" className="block px-4 py-2 text-gray-700 hover:bg-green-100">
-                              {treatment}
-                            </a>
+                            <Link to="/treatments" className="block px-4 py-2 text-gray-700 hover:bg-green-100">
+                              {item}
+                            </Link>
                           </li>
                         ))}
                       </ul>
                     </div>
                   )}
                 </li>
-                {[
-                  "Cardiology",
-                  "Cosmetic Surgery",
-                  "Transplant Surgery",
-                  "Orthopedics",
-                  "General Surgery",
-                  "Oncology",
-                  "Spinal Surgery",
-                  "Ophthalmology",
-                  "Neurology",
-                  "Urology",
-                  "Nephrology",
-                  "ENT",
-                  "Infertility",
-                ].map((treatment, index) => (
+                {treatments.map((treatment, index) => (
                   <li key={index}>
-                    <a href="#" className="block px-4 py-2 text-gray-700 hover:bg-green-100">
+                    <Link to="/treatments" className="block px-4 py-2 text-gray-700 hover:bg-green-100">
                       {treatment}
-                    </a>
+                    </Link>
                   </li>
                 ))}
               </ul>
             </div>
           </li>
-
-          {["Knowledge", "Review", "Contact Us", "About"].map((link, index) => (
-            <li key={index}>
-              <a href="#" className="text-white hover:text-gray-300 transition duration-200">
-                {link}
-              </a>
-            </li>
-          ))}
+          <li>
+            <Link to="/knowledge" className="text-white hover:text-gray-300 transition duration-200">
+              Knowledge
+            </Link>
+          </li>
+          <li>
+            <Link to="/review" className="text-white hover:text-gray-300 transition duration-200">
+              Review
+            </Link>
+          </li>
+          <li>
+            <Link to="/contact" className="text-white hover:text-gray-300 transition duration-200">
+              Contact Us
+            </Link>
+          </li>
+          <li>
+            <Link to="/about" className="text-white hover:text-gray-300 transition duration-200">
+              About
+            </Link>
+          </li>
         </ul>
       </nav>
     </div>
